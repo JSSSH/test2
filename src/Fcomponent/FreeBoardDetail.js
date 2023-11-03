@@ -5,7 +5,7 @@ import '../Fcss/FreeBoardDetail.css';
 
 function FreeBoardDetail({ userInfo }) {
 
-  const {id} = useParams();
+  const {fbno} = useParams();
   const [board, setBoard] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [reply, setReply] =useState('');
@@ -17,7 +17,7 @@ function FreeBoardDetail({ userInfo }) {
   }
 
   // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_SERVER_URL}/fboard/${id}`)
+  //   axios.get(`${process.env.REACT_APP_SERVER_URL}/fboard/${fbno}`)
   //   .then(response => {
   //     setBoard(response.data);
   //     setIsLoading(false);
@@ -67,9 +67,19 @@ function FreeBoardDetail({ userInfo }) {
             navigate('/fbList');
           }}>목록</button>
           <button className="fb-detail-modify-btn" onClick={() => {
-            navigate('/fbupdate');
+            if(userInfo.userNo !== board.user.userNo) {
+              alert('작성자만 수정 가능합니다');
+            } else {
+              navigate('/fbupdate');
+            }
           }}>수정</button>
-          <button className="fb-detail-delete-btn">삭제</button>
+          <button className="fb-detail-delete-btn" onClick={() => {
+            if(userInfo.userNo !== board.user.userNo) {
+              alert('작성자만 삭제 가능합니다');
+            } else {
+              axios.delete();
+            }
+          }}>삭제</button>
         </div>
       </div>
       <div className="fb-comment-section">

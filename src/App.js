@@ -31,7 +31,7 @@ function App() {
       <Route path='/emailJoin' element={<EmailJoin/>}/>
       <Route path='/fbList' element={<FreeBoardList />} />
       <Route path='/fbwrite' element={<WriteFreeBoard />} />
-      <Route path='/fbdetail' element={<FreeBoardDetail />} />
+      <Route path='/fbdetail/:fbno' element={<FreeBoardDetail />} />
       <Route path='/fbupdate' element={<UpdateFreeBoard/>} />
       <Route path="/FunSurvey" element={<FunSurvey/>} />
       <Route path="/Survey" element={<Survey/>} />
